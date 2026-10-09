@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Roger Pillasagua · Calidad y automatización con Python</title>
+<meta name="description" content="Portafolio de Roger Pillasagua: control de calidad en la industria de alimentos (2020-2025) y automatización con Python. Fundador de RutaCuracao. Willemstad, Curazao.">
+<meta property="og:title" content="Roger Pillasagua · Calidad y automatización con Python">
+<meta property="og:description" content="Control de calidad en la industria de alimentos y herramientas en Python. Fundador de RutaCuracao.">
+<meta property="og:image" content="https://rpillasagua95.github.io/img/rutacuracao.webp">
+<meta property="og:type" content="profile">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"Roger Pillasagua","jobTitle":"Calidad y mejora de procesos · Automatización con Python","address":{"@type":"PostalAddress","addressLocality":"Willemstad","addressCountry":"CW"},"url":"https://rpillasagua95.github.io/","email":"mailto:rogerpillasagua95@gmail.com","alumniOf":"Universidad Agraria del Ecuador","knowsLanguage":["es","en"],"sameAs":["https://www.linkedin.com/in/rogerpillasagua","https://github.com/rpillasagua95","https://rutacuracao.com/autor.html","https://www.youtube.com/@rutacuracao"]}
+</script>
+<script>
+  // Idioma y tema antes de pintar, para que no parpadee
+  (function () {
+    try {
+      var l = localStorage.getItem('lang'); if (l) document.documentElement.lang = l;
+      var t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t;
+    } catch (e) {}
+  })();
+</script>
+<style>
+  :root {
+    --bg: #f6f3ee; --surface: #ffffff; --ink: #14202b; --muted: #5b6672; --line: #e3ddd3;
+    --accent: #0e7a73; --accent-ink: #ffffff; --coral: #d9573b; --chip: #ece6dc;
+    --shadow: 0 1px 2px rgba(20,32,43,.06), 0 8px 24px rgba(20,32,43,.06);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0f1720; --surface: #16212c; --ink: #e8edf2; --muted: #9aa7b4; --line: #26323e;
+      --accent: #3cc2b6; --accent-ink: #0b1218; --coral: #f08a6f; --chip: #1f2b37;
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0f1720; --surface: #16212c; --ink: #e8edf2; --muted: #9aa7b4; --line: #26323e;
+    --accent: #3cc2b6; --accent-ink: #0b1218; --coral: #f08a6f; --chip: #1f2b37;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.6 "Plus Jakarta Sans", system-ui, sans-serif; }
+  html[lang="es"] .en, html[lang="en"] .es { display: none !important; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+
+  header.top { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+  header.top .wrap { display: flex; align-items: center; gap: 16px; height: 60px; }
+  .brand { font-weight: 800; color: var(--ink); letter-spacing: -.01em; }
+  .brand b { color: var(--accent); }
+  nav.links { display: flex; gap: 18px; margin-left: auto; font-size: 14px; font-weight: 600; }
+  nav.links a { color: var(--muted); }
+  .tools { display: flex; gap: 6px; }
+  .tools button { border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 999px; height: 34px; min-width: 34px; padding: 0 10px; font: 600 13px/1 inherit; cursor: pointer; }
+  @media (max-width: 760px) { nav.links { display: none; } .tools { margin-left: auto; } }
+
+  .hero { padding: 72px 0 48px; }
+  .eyebrow { font: 500 12px/1 "JetBrains Mono", monospace; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
+  .hero h1 { font-size: clamp(34px, 5.4vw, 60px); line-height: 1.05; letter-spacing: -.03em; margin: 16px 0 18px; max-width: 16ch; }
+  .hero h1 em { font-style: normal; color: var(--coral); }
+  .hero p.lead { font-size: 19px; color: var(--muted); max-width: 60ch; margin: 0 0 28px; }
+  .cta { display: flex; flex-wrap: wrap; gap: 10px; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; height: 44px; padding: 0 18px; border-radius: 10px; font-weight: 700; font-size: 15px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); }
+  .btn.primary { background: var(--accent); color: var(--accent-ink); border-color: transparent; }
+  .btn:hover { text-decoration: none; filter: brightness(1.05); }
+  .meta { margin-top: 22px; color: var(--muted); font-size: 14px; display: flex; flex-wrap: wrap; gap: 6px 18px; }
+
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; margin: 8px 0 72px; }
+  .stats div { background: var(--surface); padding: 20px; }
+  .stats strong { display: block; font-size: 30px; letter-spacing: -.02em; }
+  .stats span { color: var(--muted); font-size: 14px; }
+  @media (max-width: 760px) { .stats { grid-template-columns: repeat(2, 1fr); } }
+
+  section { margin-bottom: 80px; }
+  h2 { font-size: 30px; letter-spacing: -.02em; margin: 0 0 8px; }
+  .sub { color: var(--muted); margin: 0 0 28px; max-width: 65ch; }
+
+  .project { display: grid; grid-template-columns: 1.15fr 1fr; gap: 28px; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 22px; box-shadow: var(--shadow); margin-bottom: 22px; }
+  .project.rev { grid-template-columns: 1fr 1.15fr; }
+  .project.rev .shots { order: 2; }
+  @media (max-width: 860px) { .project, .project.rev { grid-template-columns: 1fr; } .project.rev .shots { order: 0; } }
+  .shots { display: grid; gap: 10px; }
+  .shots img { width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--line); display: block; }
+  .shots .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .project h3 { font-size: 24px; margin: 4px 0 6px; letter-spacing: -.01em; }
+  .tag { display: inline-block; font: 500 11px/1 "JetBrains Mono", monospace; letter-spacing: .08em; text-transform: uppercase; color: var(--coral); }
+  .project p { color: var(--muted); margin: 0 0 12px; }
+  .project ul { margin: 0 0 14px; padding-left: 18px; }
+  .project li { margin-bottom: 6px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0 14px; padding: 0; list-style: none; }
+  .chips li { background: var(--chip); border-radius: 999px; padding: 4px 10px; font-size: 13px; font-weight: 600; margin: 0; }
+  .links-row { display: flex; flex-wrap: wrap; gap: 14px; font-weight: 700; font-size: 15px; }
+
+  .tools-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  @media (max-width: 760px) { .tools-grid { grid-template-columns: 1fr; } }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 20px; }
+  .card h4 { margin: 0 0 6px; font-size: 17px; }
+  .card p { margin: 0; color: var(--muted); font-size: 15px; }
+  .note { font-size: 13px; color: var(--muted); margin-top: 14px; }
+
+  .timeline { list-style: none; margin: 0; padding: 0; border-left: 2px solid var(--line); }
+  .timeline li { position: relative; padding: 0 0 26px 24px; }
+  .timeline li::before { content: ""; position: absolute; left: -7px; top: 7px; width: 12px; height: 12px; border-radius: 50%; background: var(--surface); border: 2px solid var(--accent); }
+  .timeline .when { font: 500 12px/1.4 "JetBrains Mono", monospace; color: var(--muted); }
+  .timeline h4 { margin: 2px 0 2px; font-size: 18px; }
+  .timeline .org { color: var(--accent); font-weight: 700; font-size: 15px; }
+  .timeline p { margin: 6px 0 0; color: var(--muted); font-size: 15px; max-width: 70ch; }
+
+  .skills { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  @media (max-width: 860px) { .skills { grid-template-columns: 1fr; } }
+
+  .contact { background: var(--ink); color: var(--bg); border-radius: 18px; padding: 40px; display: grid; grid-template-columns: 1.3fr 1fr; gap: 24px; align-items: center; }
+  .contact h2 { color: var(--bg); }
+  .contact p { color: color-mix(in srgb, var(--bg) 75%, transparent); margin: 0; }
+  .contact .list { display: grid; gap: 10px; }
+  .contact .list a { color: var(--bg); font-weight: 700; }
+  @media (max-width: 760px) { .contact { grid-template-columns: 1fr; padding: 28px; } }
+  footer { color: var(--muted); font-size: 13px; padding: 28px 0 48px; }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#">Roger <b>Pillasagua</b></a>
+    <nav class="links">
+      <a href="#proyectos"><span class="es">Proyectos</span><span class="en">Projects</span></a>
+      <a href="#experiencia"><span class="es">Experiencia</span><span class="en">Experience</span></a>
+      <a href="#habilidades"><span class="es">Habilidades</span><span class="en">Skills</span></a>
+      <a href="#contacto"><span class="es">Contacto</span><span class="en">Contact</span></a>
+    </nav>
+    <div class="tools">
+      <button id="lang" type="button" aria-label="Cambiar idioma / Change language"><span class="es">EN</span><span class="en">ES</span></button>
+      <button id="theme" type="button" aria-label="Tema claro u oscuro / Light or dark theme">◐</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="hero">
+    <div class="eyebrow"><span class="es">Calidad · Procesos · Python</span><span class="en">Quality · Processes · Python</span></div>
+    <h1 class="es">Entiendo la calidad desde dentro y <em>escribo el software</em> que la mejora.</h1>
+    <h1 class="en">I understand quality from the inside and <em>write the software</em> that improves it.</h1>
+    <p class="lead es">Cinco años en control de calidad en empacadoras de camarón de Ecuador, desde la recepción hasta el embarque. Ahí empecé a programar en Python para automatizar mi propio trabajo. Hoy vivo en Curazao y construyo herramientas que resuelven problemas reales.</p>
+    <p class="lead en">Five years in quality control at shrimp processing plants in Ecuador, from raw material reception to shipping. That is where I started programming in Python to automate my own work. Today I live in Curaçao and build tools that solve real problems.</p>
+    <div class="cta">
+      <a class="btn primary" href="https://www.linkedin.com/in/rogerpillasagua" target="_blank" rel="me noopener">LinkedIn</a>
+      <a class="btn" href="mailto:rogerpillasagua95@gmail.com"><span class="es">Escríbeme</span><span class="en">Email me</span></a>
+      <a class="btn" href="https://github.com/rpillasagua95" target="_blank" rel="me noopener">GitHub</a>
+    </div>
+    <div class="meta">
+      <span>📍 Willemstad, <span class="es">Curazao</span><span class="en">Curaçao</span></span>
+      <span>🗣️ <span class="es">Español nativo · Inglés B1</span><span class="en">Native Spanish · English B1</span></span>
+    </div>
+  </section>
+
+  <div class="stats">
+    <div><strong>2020–2025</strong><span class="es">en control de calidad de alimentos</span><span class="en">in food quality control</span></div>
+    <div><strong>6</strong><span class="es">empacadoras de camarón</span><span class="en">shrimp processing plants</span></div>
+    <div><strong>172</strong><span class="es">sentencias analizadas en RutaCuracao</span><span class="en">court rulings analyzed in RutaCuracao</span></div>
+    <div><strong>4</strong><span class="es">idiomas en RutaCuracao</span><span class="en">languages in RutaCuracao</span></div>
+  </div>
+
+  <section id="proyectos">
+    <h2><span class="es">Proyectos</span><span class="en">Projects</span></h2>
+    <p class="sub es">Lo que he construido, con enlaces para verlo funcionando.</p>
+    <p class="sub en">What I have built, with links to see it working.</p>
+
+    <article class="project">
+      <div class="shots">
+        <a href="https://rutacuracao.com/" target="_blank" rel="noopener"><img src="img/rutacuracao.webp" width="1280" height="800" alt="Portada de rutacuracao.com" loading="lazy"></a>
+        <div class="pair">
+          <img src="img/rutacuracao-calculadora.webp" width="1280" height="800" alt="Calculadora de costos de RutaCuracao" loading="lazy">
+          <img src="img/rutacuracao-requisitos.webp" width="1280" height="800" alt="Requisitos para viajar a Curazao" loading="lazy">
+        </div>
+      </div>
+      <div>
+        <span class="tag"><span class="es">Fundador y desarrollador · 2026</span><span class="en">Founder & developer · 2026</span></span>
+        <h3>RutaCuracao</h3>
+        <p class="es">Guías de trámites de migración de Curazao en español, inglés, neerlandés y papiamento, generadas con Python a partir de fuentes oficiales.</p>
+        <p class="en">Curaçao immigration procedure guides in Spanish, English, Dutch and Papiamentu, generated with Python from official sources.</p>
+        <ul class="es">
+          <li>Sitio estático generado desde datos en JSON, en 4 idiomas.</li>
+          <li>Revisión semanal automática del sitio oficial de la Toelatingsorganisatie para detectar cambios.</li>
+          <li>Análisis de 172 sentencias migratorias del Caribe neerlandés, leídas completas.</li>
+          <li>Chat con IA, calculadora de costos y llenado de los formularios oficiales en el navegador.</li>
+          <li>Funciones serverless en Vercel y automatizaciones con GitHub Actions.</li>
+        </ul>
+        <ul class="en">
+          <li>Static site generated from JSON data, in 4 languages.</li>
+          <li>Automated weekly check of the official Toelatingsorganisatie website to detect changes.</li>
+          <li>Analysis of 172 Dutch Caribbean immigration rulings, read in full.</li>
+          <li>AI chat, cost calculator and in-browser filling of official forms.</li>
+          <li>Serverless functions on Vercel and GitHub Actions automation.</li>
+        </ul>
+        <ul class="chips"><li>Python</li><li>JavaScript</li><li>Vercel</li><li>GitHub Actions</li><li>OpenAI API</li><li>Pillow</li></ul>
+        <div class="links-row">
+          <a href="https://rutacuracao.com/" target="_blank" rel="noopener"><span class="es">Ver el sitio →</span><span class="en">Visit the site →</span></a>
+          <a href="https://www.youtube.com/@rutacuracao" target="_blank" rel="noopener"><span class="es">Canal de YouTube →</span><span class="en">YouTube channel →</span></a>
+        </div>
+      </div>
+    </article>
+
+    <article class="project rev">
+      <div class="shots">
+        <a href="https://telemedicina-latam.vercel.app/" target="_blank" rel="noopener"><img src="img/telemedicina.webp" width="1280" height="800" alt="Portada de Telemedicina LATAM" loading="lazy"></a>
+      </div>
+      <div>
+        <span class="tag"><span class="es">En desarrollo · 2026</span><span class="en">In development · 2026</span></span>
+        <h3>Telemedicina LATAM</h3>
+        <p class="es">Plataforma de teleconsulta para Curazao: un especialista latinoamericano atiende por video y un médico con licencia en Curazao revisa el caso y firma la receta.</p>
+        <p class="en">Telehealth platform for Curaçao: a Latin American specialist consults by video, and a Curaçao-licensed physician reviews the case and signs the prescription.</p>
+        <ul class="es">
+          <li>Agenda, consulta inmediata y pagos con Stripe, con reembolsos automáticos.</li>
+          <li>Videoconsulta privada, recetas con código QR verificables por la farmacia y facturas para el seguro.</li>
+          <li>Chatbot de WhatsApp, interfaz en español, inglés y neerlandés, y doble verificación de acceso.</li>
+        </ul>
+        <ul class="en">
+          <li>Scheduling, on-demand consultations and Stripe payments with automatic refunds.</li>
+          <li>Private video consultations, QR-verifiable prescriptions for pharmacies and insurance invoices.</li>
+          <li>WhatsApp chatbot, Spanish/English/Dutch interface and two-factor authentication.</li>
+        </ul>
+        <ul class="chips"><li>Next.js</li><li>TypeScript</li><li>Stripe</li><li>Daily.co</li><li>Twilio</li></ul>
+        <div class="links-row">
+          <a href="https://telemedicina-latam.vercel.app/" target="_blank" rel="noopener"><span class="es">Ver la demostración (datos ficticios) →</span><span class="en">See the demo (fictitious data) →</span></a>
+        </div>
+      </div>
+    </article>
+
+    <h3 style="margin:40px 0 6px;font-size:22px"><span class="es">Herramientas de calidad en Aquagold (2025)</span><span class="en">Quality tools at Aquagold (2025)</span></h3>
+    <p class="sub es">Programadas en Python para el laboratorio de calidad mientras trabajaba como Monitor de Calidad.</p>
+    <p class="sub en">Built in Python for the quality lab while working as a Quality Monitor.</p>
+    <div class="tools-grid">
+      <div class="card"><h4>AquaCheck</h4>
+        <p class="es">Revisa el análisis de recepción de cada lote, marca los defectos fuera de límite, distingue lotes ASC y convencionales y envía el reporte de liberación con fotos al grupo de calidad por WhatsApp.</p>
+        <p class="en">Reviews each lot's reception analysis, flags out-of-limit defects, distinguishes ASC and conventional lots and sends the release report with photos to the quality team via WhatsApp.</p></div>
+      <div class="card"><h4><span class="es">Sistema de Reportes Organolépticos</span><span class="en">Sensory Reports System</span></h4>
+        <p class="es">Siete reportes: sabores, novedades, análisis mensual, grupos de proveedores, ASC, incidencias de calidad y personalizado.</p>
+        <p class="en">Seven reports: flavors, findings, monthly analysis, supplier groups, ASC, quality incidents and custom.</p></div>
+      <div class="card"><h4><span class="es">Bots de carga al portal y al ERP</span><span class="en">Portal and ERP upload bots</span></h4>
+        <p class="es">Selenium y PyQt5: cargan los análisis desde Excel al portal web de la empresa y al ERP Libra (SO₂ residual y pruebas de resistencia).</p>
+        <p class="en">Selenium and PyQt5: load lab results from Excel into the company web portal and the Libra ERP (residual SO₂ and resistance tests).</p></div>
+      <div class="card"><h4><span class="es">Buscador y revisor de descongelado</span><span class="en">Search tool and thawed-product checker</span></h4>
+        <p class="es">Buscador de análisis con SQLite y revisor de producto descongelado frente a las fichas técnicas, con instaladores (PyInstaller).</p>
+        <p class="en">Analysis search with SQLite and a thawed-product checker against technical specifications, with installers (PyInstaller).</p></div>
+    </div>
+    <p class="note es">El código y los datos son de uso interno de la empresa y no se publican.</p>
+    <p class="note en">The code and data are for the company's internal use and are not published.</p>
+  </section>
+
+  <section id="experiencia">
+    <h2><span class="es">Experiencia</span><span class="en">Experience</span></h2>
+    <p class="sub es">Control de calidad en la industria camaronera de Ecuador, de la materia prima al embarque.</p>
+    <p class="sub en">Quality control in Ecuador's shrimp industry, from raw material to shipping.</p>
+    <ol class="timeline">
+      <li><div class="when"><span class="es">sep 2026 – actualidad</span><span class="en">Sep 2026 – present</span></div>
+        <h4><span class="es">Fundador y desarrollador</span><span class="en">Founder & Developer</span></h4><div class="org">RutaCuracao · Willemstad</div></li>
+      <li><div class="when"><span class="es">ene 2025 – ene 2026</span><span class="en">Jan 2025 – Jan 2026</span></div>
+        <h4><span class="es">Monitor de Calidad</span><span class="en">Quality Monitor</span></h4><div class="org">Aquagold S.A. · Durán</div>
+        <p class="es">Análisis organoléptico de materia prima y automatización del laboratorio con Python.</p>
+        <p class="en">Sensory analysis of raw material and lab automation with Python.</p></li>
+      <li><div class="when"><span class="es">feb 2024 – nov 2024</span><span class="en">Feb 2024 – Nov 2024</span></div>
+        <h4><span class="es">Analista de Calidad</span><span class="en">Quality Analyst</span></h4><div class="org">Procamaronex</div>
+        <p class="es">Aseguramiento de calidad documental: trazabilidad, auditorías internas, ISO 9001 y HACCP.</p>
+        <p class="en">Quality assurance documentation: traceability, internal audits, ISO 9001 and HACCP.</p></li>
+      <li><div class="when"><span class="es">nov 2023 – feb 2024</span><span class="en">Nov 2023 – Feb 2024</span></div>
+        <h4><span class="es">Analista Físico-Químico</span><span class="en">Physical-Chemical Analyst</span></h4><div class="org">Langosmar S.A.</div>
+        <p class="es">Metabisulfito por Monier-Williams, Kjeldahl y Biofish; evaluación de materia prima.</p>
+        <p class="en">Metabisulfite by Monier-Williams, Kjeldahl and Biofish; raw material evaluation.</p></li>
+      <li><div class="when"><span class="es">feb 2022 – ago 2023</span><span class="en">Feb 2022 – Aug 2023</span></div>
+        <h4><span class="es">Analista de Calidad Senior</span><span class="en">Senior Quality Analyst</span></h4><div class="org">Omarsa S.A.</div>
+        <p class="es">Calidad de la recepción al producto final, auditorías de embarque y supervisión de personal.</p>
+        <p class="en">Quality from reception to finished product, shipping audits and staff supervision.</p></li>
+      <li><div class="when"><span class="es">mar 2021 – ene 2022</span><span class="en">Mar 2021 – Jan 2022</span></div>
+        <h4><span class="es">Analista de Calidad</span><span class="en">Quality Analyst</span></h4><div class="org">Exposynergy</div>
+        <p class="es">Análisis físicos, organolépticos y proteína por Kjeldahl; control en IQF y embarque.</p>
+        <p class="en">Physical, sensory and Kjeldahl protein analysis; IQF and shipping control.</p></li>
+      <li><div class="when"><span class="es">jun 2020 – sep 2020</span><span class="en">Jun 2020 – Sep 2020</span></div>
+        <h4><span class="es">Analista de Control de Calidad</span><span class="en">Quality Control Analyst</span></h4><div class="org">Industrial Pesquera Santa Priscila</div>
+        <p class="es">Control en congelación: conteo, uniformidad, peso, temperatura y glaseado.</p>
+        <p class="en">Freezing control: count, uniformity, weight, temperature and glazing.</p></li>
+    </ol>
+  </section>
+
+  <section id="habilidades">
+    <h2><span class="es">Habilidades</span><span class="en">Skills</span></h2>
+    <p class="sub es">Lo que uso en el trabajo diario.</p>
+    <p class="sub en">What I use day to day.</p>
+    <div class="skills">
+      <div class="card"><h4><span class="es">Calidad e inocuidad</span><span class="en">Quality & food safety</span></h4>
+        <ul class="chips"><li>HACCP</li><li>BPM / GMP</li><li>BRCGS</li><li>ISO 9001</li><li>ISO 22000</li><li>GlobalGAP</li><li>ASC</li></ul>
+        <p class="es">Métodos: Monier-Williams, Kjeldahl, Biofish, yodométrico y análisis organoléptico.</p>
+        <p class="en">Methods: Monier-Williams, Kjeldahl, Biofish, iodometric and sensory analysis.</p></div>
+      <div class="card"><h4><span class="es">Mejora de procesos</span><span class="en">Process improvement</span></h4>
+        <ul class="chips"><li>5S</li><li>Kaizen</li><li>PDCA</li><li><span class="es">Causa raíz</span><span class="en">Root cause</span></li><li>KPI</li><li><span class="es">Trazabilidad</span><span class="en">Traceability</span></li></ul>
+        <p class="es">Auditorías internas y externas, no conformidades y documentación de calidad.</p>
+        <p class="en">Internal and external audits, non-conformities and quality documentation.</p></div>
+      <div class="card"><h4><span class="es">Programación</span><span class="en">Programming</span></h4>
+        <ul class="chips"><li>Python</li><li>pandas</li><li>openpyxl</li><li>Selenium</li><li>PyQt5</li><li>Tkinter</li><li>SQLite</li><li>JavaScript</li><li>TypeScript</li><li>Next.js</li></ul>
+        <p class="es">Integraciones con WhatsApp, portales web y ERP; despliegue en Vercel y GitHub Actions.</p>
+        <p class="en">Integrations with WhatsApp, web portals and ERPs; deployment with Vercel and GitHub Actions.</p></div>
+    </div>
+    <div class="card" style="margin-top:16px">
+      <h4><span class="es">Formación</span><span class="en">Education</span></h4>
+      <p class="es">Ingeniería Agrícola, mención Agroindustrial — Universidad Agraria del Ecuador (2016–2021), egresado.</p>
+      <p class="en">Agricultural Engineering, Agro-industrial track — Universidad Agraria del Ecuador (2016–2021), coursework completed.</p>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <div class="contact">
+      <div>
+        <h2><span class="es">¿Hablamos?</span><span class="en">Let's talk</span></h2>
+        <p class="es">Busco aportar donde se crucen la calidad, la mejora de procesos y la automatización, en Curazao o en remoto.</p>
+        <p class="en">I want to contribute where quality, process improvement and automation meet, in Curaçao or remotely.</p>
+      </div>
+      <div class="list">
+        <a href="mailto:rogerpillasagua95@gmail.com">✉️ rogerpillasagua95@gmail.com</a>
+        <a href="https://wa.me/59996925640" target="_blank" rel="noopener">💬 WhatsApp +5999 692-5640</a>
+        <a href="https://www.linkedin.com/in/rogerpillasagua" target="_blank" rel="me noopener">in linkedin.com/in/rogerpillasagua</a>
+        <a href="https://github.com/rpillasagua95" target="_blank" rel="me noopener">⌥ github.com/rpillasagua95</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">© 2026 Roger Pillasagua · <a href="https://rutacuracao.com/autor.html">rutacuracao.com</a></footer>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    function save(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+    document.getElementById('lang').addEventListener('click', function () {
+      root.lang = root.lang === 'es' ? 'en' : 'es';
+      save('lang', root.lang);
+    });
+    document.getElementById('theme').addEventListener('click', function () {
+      var dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+      root.dataset.theme = dark ? 'light' : 'dark';
+      save('theme', root.dataset.theme);
+    });
+  })();
+</script>
+</body>
+</html>
